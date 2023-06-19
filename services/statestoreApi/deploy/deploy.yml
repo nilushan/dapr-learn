@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: statestoreapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: statestoreapi
+  template:
+    metadata:
+      labels:
+        app: statestoreapi
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "statestoreapi"
+        dapr.io/app-port: "3000"
+        dapr.io/enable-api-logging: "true"
+    spec:
+      containers:
+        - name: statestoreapi
+          image: 192.168.49.2:5000/statestoreapi:0.1.8
+          ports:
+            - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: statestoreapi
+spec:
+  selector:
+    app: statestoreapi
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer

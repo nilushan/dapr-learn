@@ -1,0 +1,30 @@
+{
+  "name": "statestoreapi",
+  "version": "0.1.8",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cont": " docker build -t statestoreapi . && docker tag statestoreapi $npm_package_config_dockerregistry/statestoreapi:$npm_package_version && docker push $npm_package_config_dockerregistry/statestoreapi:$npm_package_version "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/fastify-cors": "^2.1.0",
+    "@types/node": "^20.3.1",
+    "typescript": "^5.1.3"
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.3.0",
+    "axios": "^1.4.0",
+    "fastify": "^4.18.0",
+    "fastify-cors": "^6.1.0",
+    "fastify-swagger": "^5.2.0"
+  },
+  "config": {
+    "dockerregistry": "192.168.49.2:5000"
+  }
+}

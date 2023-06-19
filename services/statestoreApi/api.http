@@ -1,0 +1,23 @@
+
+### get root 
+GET http://localhost:3000/ 
+
+### Get all states
+GET http://localhost:3000/state/user4param 
+
+
+### create a new state
+POST http://localhost:3000/state/user4param
+content-type: application/json
+
+{
+    "age": 55,
+    "name": "user4",
+    "address": "address4"
+    
+}
+
+
+### Get all properties
+GET localhost:3000/state/property
+
