@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: statestoreapi
-          image: 192.168.49.2:5000/statestoreapi:0.1.8
+          image: localhost:5000/statestoreapi:0.1.8
           ports:
             - containerPort: 3000
 

@@ -61,3 +61,40 @@ sudo apt install -y nodejs
 
 
 ````
+
+Enable Minikube registry 
+
+```
+minikube addons enable registry
+```
+
+forward registry port and make it accessbile via localhost
+```
+docker run --rm -it --network=host alpine ash -c "apk add socat && socat TCP-LISTEN:5000,reuseaddr,fork TCP:$(minikube ip):5000"
+
+```
+
+
+to build and deploy container to registry
+
+```
+npm run cont
+```
+
+Deploy the service to kubernates
+
+```
+kubectl apply -f ./deploy/deploy.yml
+```
+
+Check if pods are created
+
+```
+kubectl get pods
+```
+
+port forward service to localhost
+
+```
+kubectl port-forward service/statestoreapi 3000:80
+```
